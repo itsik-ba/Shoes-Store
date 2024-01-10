@@ -24,4 +24,26 @@ import { StyleSheet } from "react-native";
       color: "black",
       fontWeight: "bold",
    },
+   card:{
+    // margin: 5,
+    // padding: 5,
+    borderRadius: 8,
+    borderWidth: 2,
+    borderColor: '#ccc',
+    backgroundColor: '#fff',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 2,
+    
+   },
+
+   imageStyle:{
+    width:200,
+    height:200,
+    marginBottom:80,
+    
+    
+   }
+
   });

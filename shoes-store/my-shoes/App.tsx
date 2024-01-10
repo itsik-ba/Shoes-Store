@@ -6,8 +6,6 @@ import Admin from './pages/Admin';
 import { globalStyle } from './pages/style/Style';
 
 
-
-
 export default function App() {
    return (
     <SafeAreaView style={globalStyle.container}>
@@ -16,11 +14,10 @@ export default function App() {
      </Text>
 
      <View style={globalStyle.navbar}>
-       {[ 
-      <Women key={1}/>,
-      <Man key={2} />,
-      <Admin key={3} />,
-        ]}
+      
+      <Women/>
+     
+      
      </View>
      
       <StatusBar style="auto" />
