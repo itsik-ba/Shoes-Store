@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Image , ScrollView, View, Text, TouchableOpacity } from 'react-native';
 import { globalStyle } from './style/Style';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
@@ -12,7 +12,7 @@ type ProfileScreenNavigationProp = NavigationProp<RootStackParamList, 'Cart'>;
 const Women = () => {
   const navigation = useNavigation<ProfileScreenNavigationProp>();
 
-  const womenShoes = [
+  const [womenShoes, setWomenShoes] = useState([
     {
      name:"Black_Heels", 
      url:require("../assets/women/black_akev.png"),
@@ -43,12 +43,13 @@ const Women = () => {
      url:require("../assets/women/sport_white.png"),
      price:"68$"
     },
-];
+]);
 
 
-const handleClick = () =>{
+const handleClick = (women) =>{
+  console.log(women)
   navigation.navigate('Cart')
-  
+ 
 
 }
 
@@ -61,7 +62,7 @@ return (
           <TouchableOpacity
           style={globalStyle.card}
           key={index}
-          onPress={()=> handleClick()}
+          onPress={()=> handleClick(women)}
           >
           <Text style={globalStyle.cardText}>{women.name}</Text>
         <Image 
