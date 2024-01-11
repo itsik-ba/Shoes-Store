@@ -1,8 +1,16 @@
 import React from 'react'
-import { Image , ScrollView, View, Text } from 'react-native';
+import { Image , ScrollView, View, Text, TouchableOpacity } from 'react-native';
 import { globalStyle } from './style/Style';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+
+type RootStackParamList = {
+  Admin: undefined;
+  };
+
+type ProfileScreenNavigationProp = NavigationProp<RootStackParamList, 'Admin'>;
 
 const Women = () => {
+  const navigation = useNavigation<ProfileScreenNavigationProp>();
 
   const womenShoes = [
     {
@@ -38,20 +46,30 @@ const Women = () => {
 ];
 
 
+const handleClick = () =>{
+  navigation.navigate('Admin');
+}
+
+
 return (
   <ScrollView>
      <View>
       {
         womenShoes.map((women, index)=>(
-          <View style={globalStyle.card}>
-          <Text>{women.name}</Text>
+          <TouchableOpacity
+          style={globalStyle.card}
+          key={index}
+          onPress={()=> handleClick()}
+          >
+          <Text style={globalStyle.cardText}>{women.name}</Text>
         <Image 
         key={index}
         source={women.url}
         style={globalStyle.imageStyle}
         />
-        <Text>{women.price}</Text>
-          </View>
+        <Text 
+        style={globalStyle.cardText}>{women.price}</Text>
+          </TouchableOpacity>
         ))}
      </View>
      </ScrollView>

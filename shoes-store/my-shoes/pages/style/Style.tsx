@@ -25,8 +25,8 @@ import { StyleSheet } from "react-native";
       fontWeight: "bold",
    },
    card:{
-    // margin: 5,
-    // padding: 5,
+    padding:5,
+    margin:10,
     borderRadius: 8,
     borderWidth: 2,
     borderColor: '#ccc',
@@ -35,15 +35,24 @@ import { StyleSheet } from "react-native";
     shadowOpacity: 0.2,
     shadowRadius: 2,
     elevation: 2,
-    
-   },
+    justifyContent: 'center',
+    alignItems: 'center',
+    },
+
+    cardText:{
+      marginBottom:10,
+      paddingBottom:10,
+      textAlign: "center",
+      fontSize:20,
+      fontWeight: "bold",
+     
+    },
 
    imageStyle:{
     width:200,
     height:200,
-    marginBottom:80,
+    resizeMode: 'contain',
     
-    
-   }
+    }
 
   });
