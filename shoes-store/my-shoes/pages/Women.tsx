@@ -4,10 +4,10 @@ import { globalStyle } from './style/Style';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 
 type RootStackParamList = {
-  Admin: undefined;
+  Cart: undefined;
   };
 
-type ProfileScreenNavigationProp = NavigationProp<RootStackParamList, 'Admin'>;
+type ProfileScreenNavigationProp = NavigationProp<RootStackParamList, 'Cart'>;
 
 const Women = () => {
   const navigation = useNavigation<ProfileScreenNavigationProp>();
@@ -47,7 +47,9 @@ const Women = () => {
 
 
 const handleClick = () =>{
-  navigation.navigate('Admin');
+  navigation.navigate('Cart')
+  
+
 }
 
 

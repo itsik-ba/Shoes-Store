@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Admin from './pages/Admin'
 import Women from './pages/Women';
 import Man from './pages/Man';
+import Cart from './pages/Cart';
 
 const Stack = createNativeStackNavigator()
 
@@ -25,7 +26,7 @@ export default function App() {
        <Stack.Navigator>
          <Stack.Screen name="Women" component={Women} />
          <Stack.Screen name="Man" component={Man} />
-         <Stack.Screen name="Admin" component={Admin} />
+         <Stack.Screen name="Cart" component={Cart} />
        </Stack.Navigator>
      </NavigationContainer>
        <StatusBar style="auto" />
