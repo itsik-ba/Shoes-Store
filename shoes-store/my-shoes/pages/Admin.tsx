@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Text, View, ScrollView, TextInput, Button, Image  } from 'react-native';
 import { styleAdmin } from './style/StyleAdmin';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {globalStyle} from "../pages/style/Style"
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
@@ -10,7 +9,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Admin = () => {
 
-   const [womenShoes, setWomenShoes] = useState([
+  const [womenShoes, setWomenShoes] = useState([
     {
      name:"Black_Heels", 
      url:require("../assets/women/black_akev.png"),
@@ -43,20 +42,24 @@ const Admin = () => {
     },
 ]);
 
+ 
+
 const handleGetAllItems = () =>{
+    
 try {
-  
+   console.log("first") 
 } catch (error) {
   console.error(error);
 }
 
 return (
-
-   <View style={styleAdmin.showList}>
-      <View style={styleAdmin.listContainer}>
-        <Text style={styleAdmin.listFonts}>hello</Text>
-       <Image source={require("../assets/admin.png")} style={styleAdmin.image} />
-       <Text style={styleAdmin.listFonts}>asdasda</Text>
+  <View style={styleAdmin.showList}>
+    {
+      womenShoes.map((data, index) =>(
+        <View style={styleAdmin.listContainer} key={index}>
+        <Text style={styleAdmin.listFonts}>{data.name}</Text>
+       <Image source={data.url} style={styleAdmin.image} />
+       <Text style={styleAdmin.listFonts}>{data.price}</Text>
 
        <View style={styleAdmin.deleteUpdate}>
         <TouchableOpacity onPress={handleUpadateItem}>
@@ -69,11 +72,11 @@ return (
     
        </View>
       </View>
-   </View>  
+      ))
+    }
      
-
+   </View>  
 )
-
 }
  
 const handleAddItem = () =>{
