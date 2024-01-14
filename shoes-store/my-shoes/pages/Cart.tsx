@@ -1,48 +1,35 @@
-import { SafeAreaView, View, Text, Image } from 'react-native'
-import { globalStyle } from './style/Style'
-import { useEffect, useState } from 'react'
-
-interface CartItem {
-  id: number;
-  name: string;
-  url: any;
-  price: number;
-}
-
-interface CartProps {
-  selectedItem: CartItem;
-}
+import { SafeAreaView, View, Text, Image, Button, TextInput } from 'react-native'
+import { RouteProp } from '@react-navigation/native';
+import { globalStyle } from './style/Style';
 
 
-const Cart: React.FC<CartProps> = ({selectedItem}) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-   console.log(cartItems);
-  useEffect(() => {
-    if (selectedItem) {
-       setCartItems((prevItems) => [...prevItems, selectedItem]);
-    }
-  }, [selectedItem]);
+type RootStackParamList = {
+  Cart: { name: string; url: any; price: string; quantity: number };
+};
 
+type CartScreenRouteProp = RouteProp<RootStackParamList, 'Cart'>;
 
+const Cart: React.FC<{
+  route: CartScreenRouteProp;
+}> = ({ route }) => {
+  const { name, url, price } = route.params;
 
   return (
-    <SafeAreaView>
-    <View style={globalStyle.card}>
-    
-      {cartItems.map((item, index) => (
-        <><Text key={index} style={globalStyle.cardText}> {item.name} </Text>
-        <Image 
-        key={index}
-        source={item.url}
-        style={globalStyle.imageStyle}
-        />
-          <Text 
-        style={globalStyle.cardText}>{item.price}</Text>
-        </>    
-      ))}
-   </View>
-  </SafeAreaView>
-  )
-}
+    <View style={globalStyle.card2}>
+       <Text style={globalStyle.cardText}>{name}</Text>
+      <Image source={url} style={globalStyle.imageStyle} />
+      <Text style={globalStyle.cardText}>{price}</Text>
+      <TextInput
+        style={globalStyle.input}
+        keyboardType="numeric"
+        value={quantity.toString()}
+        onChangeText={(text) => setQuantity(parseInt(text, 10) || 0)}
+      />
+      <Button title='Buy' />
+      
+    </View>
+  );
+};
+
 
 export default Cart

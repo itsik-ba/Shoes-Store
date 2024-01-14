@@ -4,8 +4,15 @@ import { globalStyle } from './style/Style';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 
 type RootStackParamList = {
-  Cart: undefined;
+  Cart: { name: string; url: any; price: string };
   };
+
+  type WomenShoe = {
+    name: string;
+    url: any; 
+    price: string;
+  };
+  
 
 type ProfileScreenNavigationProp = NavigationProp<RootStackParamList, 'Cart'>;
 
@@ -46,9 +53,9 @@ const Women = () => {
 ]);
 
 
-const handleClick = (women) =>{
-  console.log(women)
-  navigation.navigate('Cart')
+const handleClick = (data: WomenShoe) =>{
+  console.log(data)
+  navigation.navigate('Cart', { name: data.name, url: data.url, price: data.price });
  
 
 }
@@ -56,22 +63,22 @@ const handleClick = (women) =>{
 
 return (
   <ScrollView>
-     <View>
+     <View style={globalStyle.container}>
       {
-        womenShoes.map((women, index)=>(
+        womenShoes.map((data, index)=>(
           <TouchableOpacity
           style={globalStyle.card}
           key={index}
-          onPress={()=> handleClick(women)}
+          onPress={()=> handleClick(data)}
           >
-          <Text style={globalStyle.cardText}>{women.name}</Text>
+          <Text style={globalStyle.cardText}>{data.name}</Text>
         <Image 
         key={index}
-        source={women.url}
+        source={data.url}
         style={globalStyle.imageStyle}
         />
         <Text 
-        style={globalStyle.cardText}>{women.price}</Text>
+        style={globalStyle.cardText}>{data.price}</Text>
           </TouchableOpacity>
         ))}
      </View>
