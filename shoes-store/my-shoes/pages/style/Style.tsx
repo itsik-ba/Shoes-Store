@@ -27,6 +27,7 @@ import { StyleSheet } from "react-native";
       fontWeight: "bold",
    },
    card:{
+    alignSelf: "center",
     padding:5,
     margin:10,
     borderRadius: 8,
@@ -45,8 +46,9 @@ import { StyleSheet } from "react-native";
     },
 
     card2:{
+      alignSelf: "center",
       padding:5,
-      margin:10,
+      margin:50,
       borderRadius: 8,
       borderWidth: 2,
       borderColor: '#ccc',

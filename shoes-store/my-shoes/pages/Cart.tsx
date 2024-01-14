@@ -1,10 +1,11 @@
-import { SafeAreaView, View, Text, Image, Button, TextInput } from 'react-native'
+import React from 'react';
+import { View, Text, Image, Button } from 'react-native'
 import { RouteProp } from '@react-navigation/native';
 import { globalStyle } from './style/Style';
 
 
 type RootStackParamList = {
-  Cart: { name: string; url: any; price: string; quantity: number };
+  Cart: { name: string; url: any; price: string};
 };
 
 type CartScreenRouteProp = RouteProp<RootStackParamList, 'Cart'>;
@@ -19,12 +20,7 @@ const Cart: React.FC<{
        <Text style={globalStyle.cardText}>{name}</Text>
       <Image source={url} style={globalStyle.imageStyle} />
       <Text style={globalStyle.cardText}>{price}</Text>
-      <TextInput
-        style={globalStyle.input}
-        keyboardType="numeric"
-        value={quantity.toString()}
-        onChangeText={(text) => setQuantity(parseInt(text, 10) || 0)}
-      />
+      
       <Button title='Buy' />
       
     </View>
