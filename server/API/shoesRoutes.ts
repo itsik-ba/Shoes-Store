@@ -8,7 +8,7 @@ import {
     deleteShoes,
 
 
-} from "../Controlls/controlls";
+} from "./controlls";
 
 
 router

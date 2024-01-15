@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, Text, View, Image} from 'react-native';
 import { globalStyle } from './pages/style/Style';

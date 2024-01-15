@@ -7,12 +7,10 @@ const ShoesSchema = new Schema({
         type: String,
         required: true
        },
-
     url: {
       type: String,
       required: true
     },
-
     price: {
       type: Number,
       required: true  
@@ -23,7 +21,7 @@ const ShoesSchema = new Schema({
 
 
 
-const ShoesModel = mongoose.model("shoes-store", ShoesSchema);
+const ShoesModel = mongoose.model("store", ShoesSchema);
 
 
 export default ShoesModel;

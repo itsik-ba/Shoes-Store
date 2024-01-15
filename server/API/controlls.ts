@@ -1,9 +1,9 @@
-import ShoesModel from "../Model/model";
+import ShoesModel from "./model";
 
 
 export const getAllShoes = async (req:any, res:any) => {
  try {
-    const shoes = await ShoesModel.find({});
+    const shoes = await ShoesModel.find({ });
     res.send({shoes})
  } catch (error: any) {
     console.error(error);
@@ -15,8 +15,12 @@ export const getAllShoes = async (req:any, res:any) => {
 export const createNewShoes = async (req:any, res:any) => {
  try {
     const {name, url , price} = req.body;
+    if(!name) throw new Error("No name provided");
+    if(!url) throw new Error("No url provided");
+    if(!price) throw new Error("No price provided");
+    
     console.log(name, url , price);
-
+     
     const newShoes = await ShoesModel.create({name, url , price});
       console.log(newShoes)
       res.status(201).send({ ok: true });
