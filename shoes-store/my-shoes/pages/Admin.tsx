@@ -3,84 +3,74 @@ import { Text, View, ScrollView, TextInput, Button, Image  } from 'react-native'
 import { styleAdmin } from './style/StyleAdmin';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import axios from 'axios';
 
 
 
 const Admin = () => {
 
-  const [womenShoes, setWomenShoes] = useState([
-    {
-     name:"Black_Heels", 
-     url:require("../assets/women/black_akev.png"),
-     price:"68$"
-    },
-    {
-     name:"Black_Heels", 
-     url:require("../assets/women/blue_akev.png"),
-     price:"68$"
-    },
-    {
-     name:"Black_Heels", 
-     url:require("../assets/women/gold_akev.png"),
-     price:"68$"
-    },
-    {
-     name:"Black_Heels", 
-     url:require("../assets/women/pink_akev.png"),
-     price:"68$"
-    },
-    {
-     name:"Black_Heels", 
-     url: require("../assets/women/sport_pink.png"),
-     price:"68$"
-    },
-    {
-     name:"Black_Heels", 
-     url:require("../assets/women/sport_white.png"),
-     price:"68$"
-    },
-]);
+const [shoes, setShoes] = useState([]);
+const [name, setName] = useState("");
+const [url, setUrl] = useState("");
+const [price, setPrice] = useState("");
+
+useEffect(()=>{
+ 
+},[]);
 
  
 
-const handleGetAllItems = () =>{
+// const handleGetAllItems = () =>{
+//     try {
+//     return (
+//   <View style={styleAdmin.showList}>
+//     {
+//       womenShoes.map((data, index) =>(
+//         <View style={styleAdmin.listContainer} key={index}>
+//         <Text style={styleAdmin.listFonts}>{data.name}</Text>
+//        <Image source={data.url} style={styleAdmin.image} />
+//        <Text style={styleAdmin.listFonts}>{data.price}</Text>
+
+//        <View style={styleAdmin.deleteUpdate}>
+//         <TouchableOpacity onPress={handleUpadateItem}>
+//        <Image source={require("../assets/update.png")} style={styleAdmin.icons}/>
+//        </TouchableOpacity>
+
+//        <TouchableOpacity onPress={handleDelete}>
+//        <Image source={require("../assets/delete.png")} style={styleAdmin.icons}/>
+//        </TouchableOpacity>
     
+//        </View>
+//       </View>
+//       ))
+//     }
+     
+// //    </View>  
+// )
+
+
+// } catch (error) {
+//   console.error(error);
+// }
+
+
+// }
+
+
+const handleAddItem  = async () =>{
 try {
-   console.log("first") 
+ const data = {
+  name:name,
+  url:url,
+  price:price
+ }
+  
+ const response = await axios.post("http://localhost:3000/api/view/createNewShoes", {data})
+  console.log(response)
+  console.log(data)
 } catch (error) {
   console.error(error);
 }
-
-return (
-  <View style={styleAdmin.showList}>
-    {
-      womenShoes.map((data, index) =>(
-        <View style={styleAdmin.listContainer} key={index}>
-        <Text style={styleAdmin.listFonts}>{data.name}</Text>
-       <Image source={data.url} style={styleAdmin.image} />
-       <Text style={styleAdmin.listFonts}>{data.price}</Text>
-
-       <View style={styleAdmin.deleteUpdate}>
-        <TouchableOpacity onPress={handleUpadateItem}>
-       <Image source={require("../assets/update.png")} style={styleAdmin.icons}/>
-       </TouchableOpacity>
-
-       <TouchableOpacity onPress={handleDelete}>
-       <Image source={require("../assets/delete.png")} style={styleAdmin.icons}/>
-       </TouchableOpacity>
-    
-       </View>
-      </View>
-      ))
-    }
-     
-   </View>  
-)
-}
- 
-const handleAddItem = () =>{
-
 }
 
 const handleDelete = () =>{
@@ -104,16 +94,24 @@ const handleUpadateItem = () =>{
       <TextInput
       style={styleAdmin.inputText}
       placeholder='Add Name'
+      onChangeText={(text) => setName(text)}
+      value={name}
       />
 
       <TextInput
       style={styleAdmin.inputText}
       placeholder='Add Image'
+      onChangeText={(text) => setUrl(text)}
+      value={url}
+      keyboardType='url'
       />
 
       <TextInput
       style={styleAdmin.inputText}
       placeholder='Add Price'
+      onChangeText={(text) => setPrice(text)}
+      value={price}
+      keyboardType="numeric"
       />
 
       <View style={styleAdmin.button}>
@@ -124,9 +122,9 @@ const handleUpadateItem = () =>{
      </View>
 
      <View style={styleAdmin.button}>
-     <Button 
+     {/* <Button 
       title='Get All Items'
-      onPress={handleGetAllItems}/>
+      onPress={handleGetAllItems}/> */}
       </View>
 </View> 
      
