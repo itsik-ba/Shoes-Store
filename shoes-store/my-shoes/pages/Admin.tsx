@@ -136,10 +136,7 @@ const Admin = () => {
           data={showAllItems ? shoesData : []}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item, index }) => {
-            // data={showAllItems ? shoesData : [shoesData[selectedItemIndex!]]}
-          // keyExtractor={(item, index) => index.toString()}
-          // renderItem={({ item, index }) => {
-            // Check if the item is defined before accessing its properties
+          
             if (!item) {
               return null; // Skip rendering if the item is undefined
             }
