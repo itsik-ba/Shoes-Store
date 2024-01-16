@@ -54,14 +54,6 @@ const Women = () => {
 
 
 
-
-
-
-
-
-
-
-
 const handleClick = (data: WomenShoe) =>{
   console.log(data)
   navigation.navigate('Cart', { name: data.name, url: data.url, price: data.price });
