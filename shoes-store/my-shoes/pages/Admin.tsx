@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import React, { useEffect, useState } from 'react'
 import { Text, View, ScrollView, TextInput, Button, Image  } from 'react-native';
 import { styleAdmin } from './style/StyleAdmin';
@@ -6,54 +6,24 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
-
-
 const Admin = () => {
-
 const [shoes, setShoes] = useState([]);
 const [name, setName] = useState("");
 const [url, setUrl] = useState("");
 const [price, setPrice] = useState("");
 
 
- 
+const handleAddItem = () =>{
+  
+} 
 
-const handleGetAllItems = async () =>{
-    try {
-      const response = await axios.get('http://localhost:3000/api/getAllShoes') 
-      const shoesData = setShoes(response.data);
-      console.log(shoesData)
-
-} catch (error) {
-  console.error(error);
-}
+const handleGetAllItems =  () =>{
+   
 
 
 }
 
 
-// useEffect(()=>{
-//   handleGetAllItems()
-// },[]);
-// const handleAddItem  = async () =>{
-// try {
-//  const newShoes = {
-//   name:name,
-//   url:url,
-//   price:price
-//  }
-//  console.log(newShoes)
-
-//     const response = await axios.post("localhost:3000/api/createNewShoes", newShoes)
-//     console.log(response.data);
-
-// //  const response = await axios.post("http://localhost:3000/api/createNewShoes", {data})
-// //   console.log(response)
-// //   console.log(data)
-// } catch (error) {
-//   console.error(error);
-// }
-// }
 
 const handleDelete = () =>{
 
@@ -95,11 +65,11 @@ const handleUpadateItem = () =>{
       value={price}
       keyboardType="numeric"
       />
-{/* 
-      <View style={styleAdmin.button}>
-      <Button title='Add-Item'
+
+       <View style={styleAdmin.button}>
+       <Button title='Add-Item'
       onPress={handleAddItem} />
-      </View> */}
+      </View> 
 
      </View>
 

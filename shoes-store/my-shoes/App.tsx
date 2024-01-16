@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, Text, View, Image} from 'react-native';
 import { globalStyle } from './pages/style/Style';
@@ -9,17 +8,19 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 const Stack = createNativeStackNavigator()
 
-import Admin from './pages/Admin';
+
 import Women from './pages/Women';
 import Man from './pages/Man';
 import Cart from './pages/Cart';
+import NavAdmin from './pages/NavAdmin';
+
 
 const AdminButton = () => {
   const navigation = useNavigation();
 
   const handleAdmin = () => {
     try {
-      navigation.navigate("Admin");
+      navigation.navigate("NavAdmin");
     } catch (error) {
       console.error(error);
     }
@@ -49,7 +50,7 @@ export default function App() {
          <Stack.Screen name="Women" component={Women} />
          <Stack.Screen name="Man" component={Man} />
          <Stack.Screen name="Cart" component={Cart} />
-         <Stack.Screen name="Admin" component={Admin} />
+         <Stack.Screen name="NavAdmin" component={NavAdmin} />
        </Stack.Navigator>
     
        <StatusBar style="auto" />
