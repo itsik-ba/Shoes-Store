@@ -73,17 +73,24 @@ width:30,
 height:30,
 marginRight: 50,
 marginLeft:50,
-
-
-
- },
+},
  deleteUpdate:{
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
   padding:20,
- }
+ },
+ 
+textButton:{
+  textAlign: 'center', 
+  color: 'blue'
+},
 
+buttonContainer:{
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  marginVertical: 8,
+},
 
 
 

@@ -8,24 +8,22 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 const Stack = createNativeStackNavigator()
 
-
+import Admin from './pages/Admin';
 import Women from './pages/Women';
 import Man from './pages/Man';
 import Cart from './pages/Cart';
-import NavAdmin from './pages/NavAdmin';
-
 
 const AdminButton = () => {
   const navigation = useNavigation();
 
   const handleAdmin = () => {
     try {
-      navigation.navigate("NavAdmin");
+      navigation.navigate("Admin");
     } catch (error) {
       console.error(error);
     }
   };
-  
+
   return (
     <TouchableOpacity onPress={handleAdmin}>
       <Image source={require("./assets/admin.png")} />
@@ -45,19 +43,17 @@ export default function App() {
          <GestureHandlerRootView>
           <AdminButton />
           </GestureHandlerRootView>
-      
+
        <Stack.Navigator>
          <Stack.Screen name="Women" component={Women} />
          <Stack.Screen name="Man" component={Man} />
          <Stack.Screen name="Cart" component={Cart} />
-         <Stack.Screen name="NavAdmin" component={NavAdmin} />
+         <Stack.Screen name="Admin" component={Admin} />
        </Stack.Navigator>
-    
+
        <StatusBar style="auto" />
       </SafeAreaView>
-  </NavigationContainer>  
+  </NavigationContainer>
   </>
   );
 }
-
-

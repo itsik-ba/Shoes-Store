@@ -18,8 +18,8 @@ const Cart: React.FC<{
   return (
     <View style={globalStyle.card2}>
        <Text style={globalStyle.cardText}>{name}</Text>
-      <Image source={url} style={globalStyle.imageStyle} />
-      <Text style={globalStyle.cardText}>{price}</Text>
+       <Image source={url} style={globalStyle.imageStyle} />
+       <Text style={globalStyle.cardText}>{price}</Text>
       
       <Button title='Buy' />
       
