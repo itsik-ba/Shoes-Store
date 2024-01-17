@@ -5,12 +5,12 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { womenShoesData } from './data/Data';
 
 type RootStackParamList = {
-  Cart: { name: string; url: any; price: string };
+  Cart: { name: string; url: string; price: string };
 };
 
 type WomenShoe = {
   name: string;
-  url: any;
+  url: string;
   price: string;
 };
 
@@ -20,8 +20,8 @@ const Women = () => {
   const navigation = useNavigation<ProfileScreenNavigationProp>();
 
   const handleClick = (data: WomenShoe) => {
-    // console.log(data);
-    navigation.navigate('Cart', { name: data.name, url: data.url, price: data.price });
+    console.log(data);
+    navigation.navigate('Cart', { name:data.name, url:data.url, price:data.price });
   };
 
   return (

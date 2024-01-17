@@ -2,11 +2,11 @@ import { StyleSheet } from "react-native";
 
 export const styleAdmin = StyleSheet.create({
  container: {
- 
+ height:"100%",
  },
  header:{
   textAlign: "center",
-  margin:7,
+  margin:4,
   fontSize: 20,
   color:"red",
   fontWeight: "bold",
@@ -63,8 +63,9 @@ showList:{
 
 
   image:{
-  width:150,
-  height:150,
+  width:180,
+  height:160,
+  resizeMode:"contain"
  },
 
 icons:{

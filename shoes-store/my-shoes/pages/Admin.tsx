@@ -13,13 +13,14 @@ const Admin = () => {
   const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
   const [showAllItems, setShowAllItems] = useState(true);
   const [shoesData, setShoesData] = useState(womenShoesData);
-  // const baseImagePath = '/path/to/images/';
+  const baseImagePath = '/path/to/images/';
 
   const handleAddItem = () => {
     if (name.trim() !== '' && url.trim() !== '' && price.trim() !== '') {
       const newItem = { name, url, price };
       setShoesData((prevData) => [...prevData, newItem]);
-      console.log("new item is been added");
+      console.log("new item is been added", url);
+     
       setName('');
       setUrl('');
       setPrice('');
@@ -143,7 +144,7 @@ const Admin = () => {
               return null; // Skip rendering if the item is undefined
             }
 
-            // console.log("Item URL:", item.url);
+            console.log("Item URL:", item.url);
 
             return (
              
@@ -152,6 +153,7 @@ const Admin = () => {
                 {item.url && (
                   <Image source={typeof item.url === 'string' ? { uri: item.url } : item.url} style={styleAdmin.image} />
                 )}
+                
                 <Text style={styleAdmin.listFonts}>{item.price}</Text>
                 <View style={styleAdmin.buttonContainer}>
                   <TouchableOpacity
@@ -171,8 +173,8 @@ const Admin = () => {
             
             );
           }}
-        />
-    </View>
+          />
+      </View>
     
   );
   
