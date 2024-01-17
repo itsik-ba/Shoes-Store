@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, FlatList, Image, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, FlatList, Image, Alert, ScrollView } from 'react-native';
 import { womenShoesData } from './data/Data';
 import { styleAdmin } from './style/StyleAdmin';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import ImagePicker from 'react-native-image-picker';
+
 
 const Admin = () => {
   const [name, setName] = useState('');
@@ -18,6 +19,7 @@ const Admin = () => {
     if (name.trim() !== '' && url.trim() !== '' && price.trim() !== '') {
       const newItem = { name, url, price };
       setShoesData((prevData) => [...prevData, newItem]);
+      console.log("new item is been added");
       setName('');
       setUrl('');
       setPrice('');
@@ -141,9 +143,10 @@ const Admin = () => {
               return null; // Skip rendering if the item is undefined
             }
 
-            console.log("Item URL:", item.url);
+            // console.log("Item URL:", item.url);
 
             return (
+             
               <View style={styleAdmin.listContainer}>
                 <Text style={styleAdmin.listFonts}>{item.name}</Text>
                 {item.url && (
@@ -165,11 +168,14 @@ const Admin = () => {
                   </TouchableOpacity>
                 </View>
               </View>
+            
             );
           }}
         />
     </View>
+    
   );
+  
 };
 
 export default Admin;

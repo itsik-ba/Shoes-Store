@@ -20,7 +20,7 @@ const Women = () => {
   const navigation = useNavigation<ProfileScreenNavigationProp>();
 
   const handleClick = (data: WomenShoe) => {
-    console.log(data);
+    // console.log(data);
     navigation.navigate('Cart', { name: data.name, url: data.url, price: data.price });
   };
 
