@@ -17,7 +17,7 @@ const Admin = () => {
 
   const handleAddItem = () => {
     if (name.trim() !== '' && url.trim() !== '' && price.trim() !== '') {
-      const newItem = { name, url, price };
+      const newItem = { name, url:url.toString(), price };
       setShoesData((prevData) => [...prevData, newItem]);
       console.log("new item is been added", url);
      
