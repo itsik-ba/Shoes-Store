@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, FlatList, Image, Alert, ScrollView } from 'react-native';
+import { useState, useEffect } from 'react';
+import { View, Text, TextInput, TouchableOpacity, FlatList, Image, Alert, } from 'react-native';
 import { womenShoesData } from './data/Data';
 import { styleAdmin } from './style/StyleAdmin';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import ImagePicker from 'react-native-image-picker';
-
+// import ImagePicker from 'react-native-image-picker';
+import * as ImagePicker from 'expo-image-picker';
 
 const Admin = () => {
   const [name, setName] = useState('');
@@ -82,20 +82,29 @@ const Admin = () => {
     }
   };
 
-  const handlePickImage = () => {
-    ImagePicker.launchImageLibrary(
-      {
-        mediaType: 'photo',
-      },
-      (response: any) => {
-        if (!response.error && response.uri) {
-          setUrl(response.uri);
-        } else if (response.error) {
-          console.error(response.error);
-        }
-      }
-    );
+  const handlePickImage = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+  
+    const resultAny = result as any;
+   if (resultAny?.uri && !resultAny?.cancelled) {
+      setUrl(resultAny.uri);
+    }
+  
+    const assets = resultAny?.assets || [];
+    const firstAsset = assets[0] || {};
+    const uriString = firstAsset.uri || '';
+    const startIndex = uriString.indexOf("file:///"); // Adjust the starting index based on your needs
+    const extractedString = uriString.substring(startIndex);
+    
+    setUrl(extractedString);
+    console.log(extractedString);
   };
+  
 
   return (
     <View style={styleAdmin.container}>
